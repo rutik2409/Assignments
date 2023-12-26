@@ -1,0 +1,8 @@
+<app-child
+  (newItemEvent)="receivedMessage($event)"
+  [item]="currentItem"
+></app-child
+><input type="text" #message />
+<button (click)="sendChild(message.value)">send child</button>
+<h1>message from child: {{ messageChild }}</h1>
+<router-outlet></router-outlet>

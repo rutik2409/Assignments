@@ -1,0 +1,19 @@
+span{
+  color: red;
+}
+
+div{
+  margin-bottom: 10px
+  ;
+}
+
+input{
+height: 40px;
+}
+
+div.container{
+  border: 1px solid black;
+}
+h2.contact{
+  color: purple;
+}

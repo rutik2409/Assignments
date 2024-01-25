@@ -1,0 +1,118 @@
+<div class="container mt-2">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <!-- Header Section -->
+    <div class="header mt-3">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+          <h2 class="contact">Contact Our</h2>
+          <h2>Customer Support Center</h2>
+        </div>
+        <div class="col-4"><img src="../assets/1.jpeg" alt="" /></div>
+      </div>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="information">
+      <h2>Contact Information</h2>
+      <label for="">Please fill out your contact information below.</label>
+    </div>
+
+    <!-- Reactive Form Controls -->
+    <div class="form">
+      <div class="row">
+        <div class="col-6">
+          <label for="firstName">First Name <span>*</span></label>
+          <input type="text" id="firstName" class="w-100" formControlName="firstName" />
+          <div *ngIf="firstName?.hasError('required') && (firstName?.dirty || firstName?.touched)">
+            First Name is required.
+          </div>
+          <div *ngIf="firstName?.hasError('pattern') && (firstName?.dirty || firstName?.touched)">
+            First Name should contain only alphabets.
+          </div>
+        </div>
+
+        <!-- Phone Field -->
+        <div class="col-6">
+          <label for="phone">Phone <span>*</span></label>
+          <input type="text" id="phone" class="w-100" formControlName="phone" />
+          <div *ngIf="phone?.hasError('required') && (phone?.dirty || phone?.touched)">
+            Phone is required.
+          </div>
+          <div *ngIf="phone?.hasError('pattern') && (phone?.dirty || phone?.touched)">
+            Phone should contain only digits.
+          </div>
+          <div *ngIf="phone?.hasError('minlength') && (phone?.dirty || phone?.touched)">
+            Phone length should be 10 digits.
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="email">Email <span>*</span></label>
+          <input type="text" id="email" class="w-100" formControlName="email" />
+          <div *ngIf="email?.hasError('required') && (email?.dirty || email?.touched)">
+            Email? is required.
+          </div>
+          <div *ngIf="email?.hasError('pattern') && (email?.dirty || email?.touched)">
+            Invalid email format.
+          </div>
+        </div>
+
+        <!-- City Field -->
+        <div class="col-12">
+          <label for="city">City <span>*</span></label>
+          <input type="text" id="city" class="w-100" formControlName="city" />
+          <div *ngIf="city?.hasError('required') && (city?.dirty || city?.touched)">
+            City? is required.
+          </div>
+          <div *ngIf="city?.hasError('minlength') && (city?.dirty || city?.touched)">
+            City should contain a minimum of 4 alphabets.
+          </div>
+        </div>
+        <div class="col-12">
+          <label for="state">State <span>*</span></label>
+          <select id="state" class="w-100" formControlName="state">
+            <option value="">Select State</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+          </select>
+          <div *ngIf="state?.hasError('required') && (state?.dirty || state?.touched)">
+            State is required.
+          </div>
+        </div>
+
+        <!-- ZIP Code Field -->
+        <div class="col-12">
+          <label for="zipCode">ZIP Code <span>*</span></label>
+          <input type="text" id="zipCode" class="w-100" formControlName="zipCode" />
+          <div *ngIf="zipCode?.hasError('required') && (zipCode?.dirty || zipCode?.touched)">
+            ZIP Code is required.
+          </div>
+          <div *ngIf="zipCode?.hasError('pattern') && (zipCode?.dirty || zipCode?.touched)">
+            ZIP Code should contain only digits.
+          </div>
+          <div *ngIf="zipCode?.hasError('minlength') && (zipCode?.dirty || zipCode?.touched)">
+            ZIP Code length should be 5 digits.
+          </div>
+        </div>
+
+        <!-- Comments Field -->
+        <div class="col-12">
+          <label for="comments">Comments <span>*</span></label>
+          <textarea id="comments" class="w-100" formControlName="comments"></textarea>
+          <div *ngIf="comments?.hasError('required') && (comments?.dirty || comments?.touched)">
+            Comments? are required.
+          </div>
+          <div *ngIf="comments?.hasError('minlength') && (comments?.dirty || comments?.touched)">
+            Comments should contain a minimum of 30 characters.
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div class="col-12">
+          <button type="submit" [disabled]="contactForm.invalid">Submit Form</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
